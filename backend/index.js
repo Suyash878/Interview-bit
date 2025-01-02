@@ -1,26 +1,28 @@
 import dotenv from 'dotenv';
-dotenv.config();
-import express from 'express';
-const app = express();
-
-app.use(express.json());
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import express from 'express';
+import cors  from 'cors';
+dotenv.config();
+
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" },
     {
-        temperature: 0.1,
+        temperature: 0.1,  
     }
 );
 
 app.post('/generate', async (req,res) => 
 {   
-    const message = req.body.prompt;
+    const message = req.body.question;
 
     try 
     {
-        const response = await model.generateContent(message);
+        const result = await model.generateContent(message);
+        const response = result.response.text();
         return res.status(200).json({response})
     }
     catch 

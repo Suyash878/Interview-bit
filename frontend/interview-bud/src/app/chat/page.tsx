@@ -37,7 +37,7 @@ export default function Chat()
     }
   
     async function handleClick() {
-      const url = 'http://localhost:3000/generate';
+      const url = 'https://interview-bit-7xo5.onrender.com/generate';
       const data = { question: question };
       try {
         const response = await axios.post(url, data);

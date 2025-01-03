@@ -21,7 +21,7 @@ export default function Home() {
         </div>
       </div>
       <div className="text-sm text-slate-300 mt-2">
-        "An AI assisted platform to help you prepare for your interviews"
+        &quot;An AI assisted platform to help you prepare for your interviews&quot;
       </div>
       <div className="mt-4">
           <Button onClick={() => 
